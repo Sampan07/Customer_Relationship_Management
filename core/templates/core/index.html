@@ -1,0 +1,31 @@
+
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block title %}Customer Relationship Management{% endblock %}
+{% block content %}
+<section class="bg-gray-800 text-white py-16">
+    <div class="container mx-auto text-center">
+      <h1 class="text-4xl font-bold mb-4">Welcome to Your CRM Solution</h1>
+      <p class="mb-6 text-lg">
+  <span class="text-green-400">Efficiently manage your Leads.</span>
+  <span class="text-sky-400 ml-4 mr-4"> Convert them into Clients.</span>
+  <span class="text-pink-400"> Drive your business forward with ease.</span>
+</p>
+      <a href="{% url 'userprofile:signup' %}" class="bg-gray-900 text-white font-semibold py-2 px-4 rounded hover:bg-gray-700 transition">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="py-16">
+    <div class="container mx-auto max-w-3xl bg-white shadow-lg rounded-lg p-8 text-center">
+      <h2 class="text-3xl font-bold text-indigo-800 mb-6">What is CRM?</h2>
+      <p class="text-gray-600 mb-4">CRM (customer relationship management) is the combination of practices, strategies and technologies that companies use to manage and analyze customer interactions and data throughout the customer lifecycle.</p>
+      <p class="text-gray-600 mb-4">Customer relationship management (CRM) includes the principles, practices, and guidelines that an organization follows when interacting with its customers.</p>
+      <p class="text-gray-600 mb-4">CRM is often used to refer to technology companies and systems that help manage external interactions with customers.Major areas of growth in CRM technology include software, cloud computing, and artificial intelligence.</p>
+    </div>
+  </section>
+
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Edit Client{% endblock %}
+
+{% block content %}
+<div class="py-6 px-6">
+    <h1 class="text-3xl text-green-600 font-bold text-center mb-4">Edit Client</h1>
+    <form method="post" action="." class="max-w-lg mx-auto bg-gray-300 shadow-md rounded-lg p-6 space-y-4">
+    {% csrf_token %}
+    <div class="space-y-4 text-black-900">
+            {{ form.as_p }}
+        </div>
+    <div class="flex justify-center">
+        <button type="submit" class="py-2 px-5 bg-green-700 text-white hover:bg-green-600 hover:text-white rounded-xl">Save</button>
+      </div>
+
+</form>
+</div>
+
+{% endblock %}

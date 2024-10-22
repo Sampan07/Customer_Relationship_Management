@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Log In{% endblock %}
+
+{% block content %}
+<div class="py-6 px-6 ">
+    <h1 class="mb-6 text-3xl px-2 py-4 text-indigo-900 font-bold">Log In</h1>
+<form method="post" action=".">
+    {% csrf_token %}
+    {{form.as_p}}
+    <div>
+        <button type="submit" class="mt-6 py-4 px-8 bg-indigo-700 text-white hover:bg-indigo-600 hover:text-white rounded-xl">Log in</button>
+      </div>
+    <div class="mt-4">
+            <p class="text-gray-600 mb-2 font-semibold">Don't have an account? Register here.</p>
+            <a href="{% url 'userprofile:signup' %}">
+                <button type="button" class="py-4 px-8 bg-indigo-700 text-white hover:bg-indigo-600 rounded-xl">
+                    Sign Up
+                </button>
+            </a>
+        </div>
+
+</form>
+</div>
+
+{% endblock %}

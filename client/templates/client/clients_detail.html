@@ -1,0 +1,44 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ client.name }}{% endblock %}
+{% block content %}
+<div class="py-6 px-6">
+    <h1 class="my-3 text-xl font-bold">{{ client.name }}</h1>
+    <p class="font-semibold">Email</p>
+        <p class="mb-3 ">{{ client.email }}</p>
+    {% if lead.description %}
+        <p class="font-semibold">Description</p>
+        <p class="mb-3 ">{{ client.description }}</p>
+    {% endif %}
+    <p class="font-semibold">Creation Date & Time</p>
+        <p class="mb-3 ">{{ client.created_at|date:"M-d-Y H:i" }}</p>
+    <p class="font-semibold">Modification Date & Time</p>
+        <p class="mb-7 ">{{ client.modified_at|date:"M-d-Y H:i" }}</p>
+
+    <hr class="my-4">
+    <h2 class="mb-6 font-semibold text-xl">Comments</h2>
+    <div class="space-y-4">
+            {% for comment in client.comments.all %}
+                <div class="bg-gray-200 p-6 rounded-xl">
+                    <p class="mb-2"><strong>{{ comment.created_by }}</strong> @ {{ comment.created_at }}</p>
+
+                    {{ comment.content }}
+                </div>
+            {% endfor %}
+        </div>
+    <form method="post" action="{% url 'clients:add_comment' client.id %}" class="mt-4 mx-auto bg-gray-200 shadow-md rounded-lg p-6 space-y-4 text-black-900">
+        {% csrf_token %}
+        <div class="space-y-4 text-black">
+            {{ form.as_p }}
+        </div>
+        <button class="py-2 px-4 bg-indigo-600 text-white hover:bg-indigo-700 hover:text-white rounded-xl">Submit</button>
+    </form>
+    <hr class="my-3">
+    <a href="{% url 'clients:edit' client.id %}" class="py-2 px-4 bg-green-700 text-white hover:bg-green-600 hover:text-white rounded-xl">Edit</a>
+    <a href="{% url 'clients:delete' client.id %}" class="py-2 px-4 bg-red-500 text-white hover:bg-red-600 hover:text-white rounded-xl">Delete</a>
+    <hr class="my-3">
+    <a href="{% url 'clients:list' %}" class="py-1 px-4 bg-gray-600 text-white hover:bg-gray-700 hover:text-white rounded-xl"> << Back to Clients</a>
+
+</div>
+
+{% endblock %}
